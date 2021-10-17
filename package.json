@@ -4,7 +4,9 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start": "nodemon index.js"
+    "start": "node index.js",
+    "bulkOptIn": "node scripts/bulkOptIn.js",
+    "bulkSend": "node scripts/bulkSend.js"
   },
   "keywords": [],
   "author": "Gaurav Rawal",
