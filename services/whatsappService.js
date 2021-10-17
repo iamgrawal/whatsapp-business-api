@@ -17,6 +17,7 @@ const url = {
 
 const config = {
   headers: {
+    'Cache-Control': 'no-cache',
     'Content-Type': 'application/x-www-form-urlencoded',
     apiKey: API_KEY
   }
@@ -30,52 +31,50 @@ const getUrlEncodedData = (data) => {
   return resultantData;
 };
 
-const getTemplatesList = async () => {
-  return await axios.get(url.getTemplatesList, config);
-};
+const getTemplatesList = () => axios.get(url.getTemplatesList, config);
 
-const markUserOptIn = async (userMobileNumber) => {
+const markUserOptIn = (userMobileNumber) => {
   const params = getUrlEncodedData({
     user: userMobileNumber
   });
 
-  return await axios.post(url.optInUser, params, config);
+  return axios.post(url.optInUser, params, config);
 };
 
-const sendMediaImageMessage = async (userMobileNumber, imageUrl, caption) => {
+const sendMediaImageMessage = (userMobileNumber, imageUrl, caption) => {
   const params = getUrlEncodedData({
     channel: 'whatsapp',
     source: SOURCE_MOBILE_NUMBER,
     destination: userMobileNumber,
+    'src.name': APP_NAME,
     message: {
       type: 'image',
       originalUrl: imageUrl,
       previewUrl: imageUrl,
       caption
-    },
-    'src.name': APP_NAME
+    }
   });
 
-  return await axios.post(url.sendTextMessage, params, config);
+  return axios.post(url.sendTextMessage, params, config);
 };
 
-const sendMediaVideoMessage = async (userMobileNumber, videoUrl, caption) => {
+const sendMediaVideoMessage = (userMobileNumber, videoUrl, caption) => {
   const params = getUrlEncodedData({
     channel: 'whatsapp',
     source: SOURCE_MOBILE_NUMBER,
     destination: userMobileNumber,
     message: {
-      type: 'image',
+      type: 'video',
       url: videoUrl,
       caption
     },
     'src.name': APP_NAME
   });
 
-  return await axios.post(url.sendTextMessage, params, config);
+  return axios.post(url.sendTextMessage, params, config);
 };
 
-const sendTextMessage = async (userMobileNumber, message) => {
+const sendTextMessage = (userMobileNumber, message) => {
   const params = getUrlEncodedData({
     channel: 'whatsapp',
     source: SOURCE_MOBILE_NUMBER,
@@ -88,10 +87,10 @@ const sendTextMessage = async (userMobileNumber, message) => {
     disablePreview: false
   });
 
-  return await axios.post(url.sendTextMessage, params, config);
+  return axios.post(url.sendTextMessage, params, config);
 };
 
-const sendTemplateMessage = async (userMobileNumber, templateId, templateParams, mediaMessage) => {
+const sendTemplateMessage = (userMobileNumber, templateId, templateParams, mediaMessage) => {
   const params = getUrlEncodedData({
     source: SOURCE_MOBILE_NUMBER,
     destination: userMobileNumber,
@@ -102,7 +101,7 @@ const sendTemplateMessage = async (userMobileNumber, templateId, templateParams,
     message: mediaMessage
   });
 
-  return await axios.post(url.sendTemplateMessage, params, config);
+  return axios.post(url.sendTemplateMessage, params, config);
 };
 
 module.exports = {

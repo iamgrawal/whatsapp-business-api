@@ -1,0 +1,19 @@
+{
+  "optedInUsersCount": 3,
+  "nonOptedInUsersCount": 0,
+  "optedInUsers": [
+    {
+      "name": "User 1",
+      "mobileNumber": "9188xx83xx14"
+    },
+    {
+      "name": "User 2",
+      "mobileNumber": "9198xx83xx45"
+    },
+    {
+      "name": "User 3",
+      "mobileNumber": "9190xx82xx11"
+    }
+  ],
+  "nonOptedInUsers": []
+}

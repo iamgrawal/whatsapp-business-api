@@ -6,7 +6,7 @@ const {
   sendMediaVideoMessage,
   sendTextMessage,
   sendTemplateMessage
-} = require('./whatsappService');
+} = require('./services/whatsappService');
 
 const app = express();
 const port = process.env.PORT || 3000;
@@ -18,7 +18,7 @@ app.get('/getTemplatesList', async (req, res) => {
   return res.status(status).send(data);
 });
 
-app.get('/optInUsers', async (req, res) => {
+app.get('/optInUser', async (req, res) => {
   const { mobileNumber } = req.body;
   const { status, data } = await markUserOptIn(mobileNumber);
   return res.status(status).send(data);

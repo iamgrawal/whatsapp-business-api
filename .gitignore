@@ -125,4 +125,12 @@ dist
 # Serverless Webpack directories
 .webpack/
 
+# Users data files
+assets/
+bulkSendResults.json
+bulkOptInResult.json
+
+# VS Code configuration
+.vscode/
+
 # End of https://www.toptal.com/developers/gitignore/api/node

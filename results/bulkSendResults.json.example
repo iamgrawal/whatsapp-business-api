@@ -1,0 +1,19 @@
+{
+  "successRate": 3,
+  "unsuccessfulRate": 0,
+  "successfulMessagedUsers": [
+    {
+      "name": "User 1",
+      "mobileNumber": "9188xx83xx14"
+    },
+    {
+      "name": "User 2",
+      "mobileNumber": "9198xx83xx45"
+    },
+    {
+      "name": "user 3",
+      "mobileNumber": "9190xx82xx11"
+    }
+  ],
+  "unsuccessfulMessagedUsers": []
+}
