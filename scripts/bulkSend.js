@@ -15,7 +15,7 @@ Thanks,
 *Gaurav*
 `;
 
-fs
+const bulkSend = () => fs
   .createReadStream(`assets/usersDetails.csv`)
   .pipe(parse({
     delimiter: ',',
@@ -47,3 +47,9 @@ fs
       }
     });
   }));
+
+bulkSend();
+
+module.exports = {
+  bulkSend
+};

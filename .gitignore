@@ -126,7 +126,7 @@ dist
 .webpack/
 
 # Users data files
-assets/
+usersDetails.csv
 bulkSendResults.json
 bulkOptInResult.json
 

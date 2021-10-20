@@ -2,7 +2,7 @@ const parse = require('csv-parse');
 const fs = require('fs');
 const { markUserOptIn } = require('../services/whatsappService');
 
-fs
+const bulkOptIn = () => fs
   .createReadStream(`assets/usersDetails.csv`)
   .pipe(parse({
     delimiter: ',',
@@ -33,3 +33,9 @@ fs
       }
     });
   }));
+
+bulkOptIn();
+
+module.exports = {
+  bulkOptIn
+};
