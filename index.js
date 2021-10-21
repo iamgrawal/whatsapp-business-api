@@ -1,6 +1,7 @@
 const express = require('express');
 const {
   getTemplatesList,
+  markBulkOptIn,
   markUserOptIn,
   sendMediaImageMessage,
   sendMediaVideoMessage,
@@ -21,6 +22,12 @@ app.get('/getTemplatesList', async (req, res) => {
 app.get('/optInUser', async (req, res) => {
   const { mobileNumber } = req.body;
   const { status, data } = await markUserOptIn(mobileNumber);
+  return res.status(status).send(data);
+});
+
+app.get('/bulkOptIn', async (req, res) => {
+  const { mobileNumbers } = req.body;
+  const { status, data } = await markBulkOptIn(mobileNumbers);
   return res.status(status).send(data);
 });
 
@@ -46,6 +53,11 @@ app.get('/sendTemplate', async (req, res) => {
   const { mobileNumber, templateId, templateParams, mediaMessage } = req.body;
   const { status, data } = await sendTemplateMessage(mobileNumber, templateId, templateParams, mediaMessage);
   return res.status(status).send(data);
+});
+
+app.get('/callback', async (req, res) => {
+  console.log('request callback', req.body);
+  return res.status(200).send('received');
 });
 
 app.listen(port, ()=> {

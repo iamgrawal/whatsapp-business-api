@@ -1,0 +1,10 @@
+{
+  "optedInUsersCount": 0,
+  "nonOptedInUsersCount": 0,
+  "optedInUsers": [],
+  "nonOptedInUsers": [],
+  "successRate": 0,
+  "unsuccessfulRate": 0,
+  "successfulMessagedUsers": [],
+  "unsuccessfulMessagedUsers": []
+}

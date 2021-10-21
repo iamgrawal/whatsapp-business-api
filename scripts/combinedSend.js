@@ -1,2 +1,0 @@
-require('./bulkOptIn');
-require('./bulkSend');

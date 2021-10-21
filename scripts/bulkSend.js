@@ -2,12 +2,9 @@ const parse = require('csv-parse');
 const fs = require('fs');
 const { sendTextMessage, sendMediaImageMessage } = require('../services/whatsappService');
 
-const imageUrl = 'https://www.buildquickbots.com/whatsapp/media/sample/jpg/sample02.jpg';
+// const imageUrl = 'https://www.buildquickbots.com/whatsapp/media/sample/jpg/sample02.jpg';
 const message = (username) => `
 Hi ${username},
-
-~Sorry to bother you again~, 
-Testing the bulk sending image script. 😬
 
 I hope this is working properly.
 
@@ -25,8 +22,8 @@ const bulkSend = () => fs
     const unsuccessfulMessagedUsers = [];
     
     for(const user of records) {
-      const response = await sendMediaImageMessage(user.mobileNumber, imageUrl, message(user.name));
-      // const response = await sendTextMessage(user.mobileNumber, message(user.name));
+      // const response = await sendMediaImageMessage(user.mobileNumber, imageUrl, message(user.name));
+      const response = await sendTextMessage(user.mobileNumber, message(user.name));
       if (response.status === 200) {
         successfulMessagedUsers.push(user);
       } else {

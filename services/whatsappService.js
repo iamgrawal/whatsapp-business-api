@@ -9,6 +9,7 @@ const {
 } = process.env;
 
 const url = {
+  bulkOptIn: `https://api.gupshup.io/sm/api/v1/app/opt/in/${APP_NAME}`,
   getTemplatesList: `https://api.gupshup.io/sm/api/v1/template/list/${APP_NAME}`,
   optInUser: `https://api.gupshup.io/sm/api/v1/app/opt/in/${APP_NAME}`,
   sendTextMessage: 'https://api.gupshup.io/sm/api/v1/msg',
@@ -39,6 +40,14 @@ const markUserOptIn = (userMobileNumber) => {
   });
 
   return axios.post(url.optInUser, params, config);
+};
+
+const markBulkOptIn = (userMobileNumbers) => {
+  const params = getUrlEncodedData({
+    users: userMobileNumbers
+  });
+
+  return axios.post(url.bulkOptIn, params, config);
 };
 
 const sendMediaImageMessage = (userMobileNumber, imageUrl, caption) => {
@@ -106,6 +115,7 @@ const sendTemplateMessage = (userMobileNumber, templateId, templateParams, media
 
 module.exports = {
   getTemplatesList,
+  markBulkOptIn,
   markUserOptIn,
   sendMediaImageMessage,
   sendMediaVideoMessage,
